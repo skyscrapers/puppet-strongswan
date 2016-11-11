@@ -43,6 +43,11 @@
 # Copyright 2016 Your name here, unless otherwise noted.
 #
 class strongswan {
+  case $::osfamily {
+    "RedHat": {
+      require ::epel
+    }
+  }
   service { 'strongswan':
     ensure  => running,
     enable  => true,
