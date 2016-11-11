@@ -1,0 +1,14 @@
+{
+  "name": "puppet-strongswan",
+  "version": "0.1.0",
+  "author": "skyscrapers.eu",
+  "summary": "module to configure strongswan with puppet",
+  "license": "MIT",
+  "source": "https://github.com/skyscrapers/puppet-strongswan",
+  "project_page": "https://github.com/skyscrapers/puppet-strongswan",
+  "issues_url": "https://github.com/skyscrapers/puppet-strongswan/issues",
+  "dependencies": [
+    {"name":"puppetlabs-stdlib","version_requirement":">= 1.0.0"}
+  ],
+  "data_provider": null
+}
