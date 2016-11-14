@@ -5,7 +5,7 @@ define strongswan::conn(
   $psk,
   $esp= "aes128-sha256",
   $ike= "aes128-sha256-modp3072",
-  $local_subnet= "",
+  $local_subnet,
   $ikelifetime= 28800,
   $lifetime= 3600,
   $auto_behaviour= "start",
@@ -14,6 +14,8 @@ define strongswan::conn(
   $remote_ip,
   $local_ip,
   $remote_subnet,
+  $ike_lifetime="3h",
+  $lifetime="1h",
   ) {
     file {
       "/etc/ipsec.d/$title.conf":
