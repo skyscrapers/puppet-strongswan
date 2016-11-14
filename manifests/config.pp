@@ -20,5 +20,5 @@ class strongswan::config inherits strongswan::params{
     group  => root,
     notify  => Service['strongswan'];
   }
-  create_resources('strongswan::conn', hiera_hash('strongswan::vpns', {}))
+  create_resources('strongswan::vpn', hiera_hash('strongswan::vpns', {}))
 }
