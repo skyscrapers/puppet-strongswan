@@ -1,0 +1,15 @@
+#Puppet managed conf for <%= @title %>
+conn <%= @title %>
+   keyexchange= <%= @keyexchange %>
+   left= <%= @local_ip %>
+   leftid= <%= @local_ip %>
+   right=<%= @remote_ip %>
+   rightsubnet=<%= @remote_subnet %>
+   leftsubnet=<%= @local_subnet %>
+   leftauth=<%= @local_auth %>
+   rightauth=<%= @remote_auth %>
+   ike=<%= @ike %>
+   esp=<%= @esp %>
+   auto=<%= @auto_behaviour %>
+   ikelifetime=<%= @ike_lifetime %>
+   lifetime= <%= @lifetime %>

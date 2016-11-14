@@ -1,0 +1,9 @@
+config setup
+    charondebug="dmn 1, ike 1"
+
+conn %default
+   dpddelay=30s
+   dpdtimeout=150s
+   dpdaction=restart
+
+include /etc/ipsec.d/*.conf
