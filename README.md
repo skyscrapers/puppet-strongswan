@@ -31,7 +31,6 @@ In order to make it working you will need to include the module in your manifest
 A sample configuration using hiera can be found here:
 ```
 ---
-  role: paynxt::roles::vpnhub
   strongswan::vpns:
     vpn1:
       remote_ip: "1.2.3.4"
