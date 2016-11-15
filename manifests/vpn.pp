@@ -6,25 +6,27 @@ define strongswan::vpn(
   $esp= "aes128-sha256",
   $ike= "aes128-sha256-modp3072",
   $local_subnet,
-  $ikelifetime= 28800,
-  $lifetime= 3600,
   $auto_behaviour= "start",
   $health_check=false,
   $health_check_ip = undef,
   $remote_ip,
+  $remote_id="$remote_ip",
+  $local_id="$local_ip",
   $local_ip,
   $remote_subnet,
   $ike_lifetime="3h",
   $lifetime="1h",
   ) {
+    include strongswan::params
+    $ipsec_dir = $strongswan::params::ipsec_dir
     file {
-      "/etc/ipsec.d/$title.conf":
+      "${strongswan::params::ipsec_dir}/ipsec.d/$title.conf":
       ensure => file,
       content => template('strongswan/etc/ipsec.d/conn.conf.erb'),
       mode   => '0755',
       owner  => root,
       group  => root;
-      "/etc/ipsec.d/$title.secrets":
+      "${strongswan::params::ipsec_dir}/ipsec.d/$title.secrets":
       ensure => file,
       content => template('strongswan/etc/ipsec.d/conn.secrets.erb'),
       mode   => '0755',

@@ -6,4 +6,4 @@ conn %default
    dpdtimeout=150s
    dpdaction=restart
 
-include /etc/ipsec.d/*.conf
+include <%= @ipsec_dir %>/ipsec.d/*.conf

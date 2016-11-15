@@ -1,18 +1,19 @@
 # == Class: strongswan::config
 #
 class strongswan::config inherits strongswan::params{
-  file { ['/etc/ipsec.d',]:
+  $ipsec_dir = $strongswan::params::ipsec_dir
+  file { ["$ipsec_dir",]:
     ensure => directory,
     mode => '0700',
   }
   file {
-    '/etc/ipsec.conf':
+    "${strongswan::params::ipsec_dir}/ipsec.conf":
     ensure => file,
     content => template('strongswan/etc/ipsec.d/ipsec.conf.erb'),
     mode   => '0650',
     owner  => root,
     group  => root;
-    '/etc/ipsec.secrets':
+    "${strongswan::params::ipsec_dir}/ipsec.secrets":
     ensure => file,
     content => template('strongswan/etc/ipsec.d/ipsec.secrets.erb'),
     mode   => '0600',
