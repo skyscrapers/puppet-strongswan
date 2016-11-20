@@ -35,9 +35,9 @@ define strongswan::vpn(
       notify  => Service['strongswan'];
 
     }
-    if ("$health_check"){
+    if ($health_check){
       cron { "VPN healthcheck $title":
-      command => "count=0; for i in {1..15} ; do count=$((\$count+`ping $ -q -c 3 | grep received| awk '{print \$4}'`));  if [ \$count -eq 0 ]; then echo 'NO PING, RESTARTING';sudo systemctl restart strongswan.service;else echo 'WORKING FINE. Successful Pings:' \$count; fi; sleep 3; count=0; done;",
+      command => "count=0; for i in {1..15} ; do count=$((\$count+`ping $health_check_ip -q -c 3 | grep received| awk '{print \$4}'`));  if [ \$count -eq 0 ]; then echo 'NO PING, RESTARTING';sudo systemctl restart strongswan.service;else echo 'WORKING FINE. Successful Pings:' \$count; fi; sleep 3; count=0; done;",
       minute  => '*',
       user    => "root"
       }
